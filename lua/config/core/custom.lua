@@ -1,9 +1,13 @@
+-- lua/config/core/custom.lua
+
+local augroup = vim.api.nvim_create_augroup("user_core_autocmds", { clear = true })
+
 -- Highlight yanked text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  group = augroup,
   callback = function()
-    vim.hl.on_yank()
+    vim.highlight.on_yank({ higroup = "IncSearch", timeout = 150 })
   end,
 })
 
@@ -30,7 +34,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 vim.api.nvim_create_autocmd("TermClose", {
   group = augroup,
   callback = function()
-    if vim.v.event.status == 0 then
+    if vim.v.event and vim.v.event.status == 0 then
       vim.api.nvim_buf_delete(0, {})
     end
   end,
@@ -65,7 +69,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
--- Command-line completion
+-- Command-line completion options you had
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:full,full"
 vim.opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
