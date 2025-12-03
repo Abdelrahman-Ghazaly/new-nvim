@@ -73,3 +73,11 @@ set.foldlevel = 99                                  -- Start with all folds open
 -- Split behavior
 set.splitbelow = true -- Horizontal splits go below
 set.splitright = true -- Vertical splits go right
+
+vim.diagnostic.config({
+  virtual_text = {
+    source = "always",
+    spacing = 4,
+  },
+  virtual_lines = false,
+})

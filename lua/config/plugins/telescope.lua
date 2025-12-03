@@ -1,0 +1,72 @@
+return {
+  --   {
+  --     "nvim-telescope/telescope.nvim",
+  --     version = false,
+  --     dependencies = {
+  --       "nvim-lua/plenary.nvim",
+  --       {
+  --         "nvim-telescope/telescope-fzf-native.nvim",
+  --         build = "make",
+  --       },
+  --       "nvim-tree/nvim-web-devicons",
+  --     },
+  --
+  --     cmd = "Telescope",
+  --     keys = {
+  --       { "<leader>sf", "<cmd>Telescope find_files<cr>",                desc = "Search Files" },
+  --       { "<leader>sg", "<cmd>Telescope live_grep<cr>",                 desc = "Search Text (Grep)" },
+  --       { "<leader>sb", "<cmd>Telescope buffers<cr>",                   desc = "Search Buffers" },
+  --       { "<leader>sh", "<cmd>Telescope help_tags<cr>",                 desc = "Search Help" },
+  --
+  --       -- Smart LazyVim-style find in buffer
+  --       { "<leader>sc", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search in Buffer" },
+  --
+  --       -- Recent files (like VSCode)
+  --       { "<leader>sr", "<cmd>Telescope oldfiles<cr>",                  desc = "Search Recent Files" },
+  --     },
+  --
+  --     opts = function()
+  --       local actions = require("telescope.actions")
+  --
+  --       return {
+  --         defaults = {
+  --           prompt_prefix = "   ",
+  --           selection_caret = " ",
+  --           path_display = { "smart" },
+  --
+  --           sorting_strategy = "ascending",
+  --           layout_strategy = "flex",
+  --
+  --           layout_config = {
+  --             horizontal = { preview_width = 0.55 },
+  --             vertical = { preview_height = 0.4 },
+  --             prompt_position = "top",
+  --           },
+  --
+  --           mappings = {
+  --             i = {
+  --               ["<esc>"] = actions.close,
+  --               ["<C-j>"] = actions.move_selection_next,
+  --               ["<C-k>"] = actions.move_selection_previous,
+  --             },
+  --           },
+  --         },
+  --
+  --         pickers = {
+  --           find_files = {
+  --             hidden = true,
+  --             follow = true,
+  --           },
+  --         },
+  --       }
+  --     end,
+  --
+  --     config = function(_, opts)
+  --       local telescope = require("telescope")
+  --       telescope.setup(opts)
+  --
+  --       -- Load fzf (LazyVim does this)
+  --       pcall(telescope.load_extension, "fzf")
+  --     end,
+  --   },
+}

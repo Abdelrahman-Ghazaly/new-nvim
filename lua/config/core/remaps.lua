@@ -3,17 +3,11 @@ vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { desc = "Clear search highlight
 vim.keymap.set('n', ';', ':')
 
 -- Center screen when jumping
-vim.keymap.set("n", "n", "nztzv", { desc = "Next search result (centered)" })
-vim.keymap.set("n", "N", "Nztzv", { desc = "Previous search result (centered)" })
-vim.keymap.set("n", "<C-d>", "<C-d>zt", { desc = "Half page down (centered)" })
-vim.keymap.set("n", "<C-u>", "<C-u>zt", { desc = "Half page up (centered)" })
-vim.keymap.set("n", "G", "Gzt", { desc = "Bottom of the page (centered)" })
-
--- Center screen when jumping
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result (centered)" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+vim.keymap.set("n", "G", "Gzz", { desc = "Bottom of the page (centered)" })
 
 -- Splitting & Resizing
 vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
