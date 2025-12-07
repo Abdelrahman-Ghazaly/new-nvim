@@ -2,7 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    'saghen/blink.cmp',
+    "saghen/blink.cmp",
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim",                   opts = {} },
     { "folke/snacks.nvim",                   lazy = false },
@@ -19,10 +19,12 @@ return {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if not client then return end
+        if not client then
+          return
+        end
 
         -- Autoformatting
-        if client.supports_method('textDocument/formatting') then
+        if client.supports_method("textDocument/formatting") then
           vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = ev.buf,
             callback = function()
@@ -40,11 +42,17 @@ return {
         ------------------------------------------------------------------
 
         -- Jumps
-        map("n", "gd", function() snacks.picker.lsp_definitions() end, "Go to definition")
+        map("n", "gd", function()
+          snacks.picker.lsp_definitions()
+        end, "Go to definition")
         map("n", "gD", vim.lsp.buf.declaration, "Go to declaration")
-        map("n", "gR", function() snacks.picker.lsp_references() end, "Go to references")
+        map("n", "gR", function()
+          snacks.picker.lsp_references()
+        end, "Go to references")
         map("n", "gI", vim.lsp.buf.implementation, "Go to implementation")
-        map("n", "<leader>D", function() snacks.picker.lsp_type_definitions() end, "Type definition")
+        map("n", "<leader>D", function()
+          snacks.picker.lsp_type_definitions()
+        end, "Type definition")
 
         -- Symbols
         map("n", "<leader>ds", vim.lsp.buf.document_symbol, "Document symbols")
@@ -61,8 +69,12 @@ return {
         -- Diagnostics
         map("n", "[d", vim.diagnostic.goto_prev, "Prev diagnostic")
         map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
-        map("n", "<leader>ed", function() snacks.picker.diagnostics({ bufnr = 0 }) end, "Show buffer diagnostics")
-        map("n", "<leader>q", function() snacks.picker.diagnostics() end, "Show all diagnostics")
+        map("n", "<leader>ed", function()
+          snacks.picker.diagnostics({ bufnr = 0 })
+        end, "Show buffer diagnostics")
+        map("n", "<leader>q", function()
+          snacks.picker.diagnostics()
+        end, "Show all diagnostics")
 
         -- Tools
         map("n", "<leader>rs", ":LspRestart<CR>", "Restart LSP")
@@ -82,9 +94,9 @@ return {
       signs = {
         text = {
           [vim.diagnostic.severity.ERROR] = " ",
-          [vim.diagnostic.severity.WARN]  = " ",
-          [vim.diagnostic.severity.HINT]  = "󰠠 ",
-          [vim.diagnostic.severity.INFO]  = " ",
+          [vim.diagnostic.severity.WARN] = " ",
+          [vim.diagnostic.severity.HINT] = "󰠠 ",
+          [vim.diagnostic.severity.INFO] = " ",
         },
       },
     })
